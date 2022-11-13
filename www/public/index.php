@@ -1,12 +1,15 @@
 <?php
 
 require __DIR__.'/../../config/bootstrap.php';
+print '<pre>';
 
-echo '<pre>';
 use App\Core;
 use App\Core\Http;
 
 $oCore = new Core();
-$oReal = new Http();
+$oHttp = new Http();
+
+var_dump($oHttp->invoking_callouts());
+print '</pre>';
 
 ?>
