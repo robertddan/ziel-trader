@@ -4,7 +4,7 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "App\\": "/",
+            "App\\": ["/", "core/"],
             "App\\Core\\": "core/",
             "App\\Core\\Bin\\": "core/bin/",
             "App\\Core\\Framework\\": "core/framework/",
