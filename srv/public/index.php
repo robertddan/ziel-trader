@@ -4,14 +4,15 @@ require __DIR__.'/../../config/bootstrap.php';
 
 use App\Core\Framework\Dispatcher;
 
-function event_routing() {
+function event_dispatch() {
 	#router
 print '<pre>';
-	$oRouter = new Dispatcher();
-	$oRouter->invoking_callouts();
+	$oDispatcher = new Dispatcher();
+	$oDispatcher->invoking_callouts();
+	$oDispatcher->forwards_response();
 print '</pre>';
 	return true;
 }
 
-if (!event_routing()) die('event_routing'); 
+if (!event_dispatch()) die('event_dispatch'); 
 ?>
