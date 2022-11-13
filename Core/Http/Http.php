@@ -3,9 +3,9 @@
 
 namespace App\Core;
 
-class Real {
+class Http {
 	function __construct() {
-		var_dump('Real');
+		var_dump('Http');
 	}
 }
 

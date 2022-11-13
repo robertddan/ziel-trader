@@ -4,9 +4,9 @@ require __DIR__.'/../../config/bootstrap.php';
 
 echo '<pre>';
 use App\Core;
-use App\Core\Real;
+use App\Core\Http;
 
 $oCore = new Core();
-$oReal = new Real();
+$oReal = new Http();
 
 ?>
