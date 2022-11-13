@@ -2,11 +2,11 @@
 
 require __DIR__.'/../../config/bootstrap.php';
 
-
 echo '<pre>';
 use App\Core;
+use App\Core\Real;
 
-$oHttp = new Core();
-#$oHttp->run();
+$oCore = new Core();
+$oReal = new Real();
 
 ?>
