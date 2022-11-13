@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Root\Roboziel\Core;
+namespace App\Core;
 
 class Http {
 	function __construct() {

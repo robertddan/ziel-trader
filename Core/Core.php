@@ -1,8 +1,7 @@
 <?php
 
 
-use Root\Roboziel;
-namespace Root\Roboziel\Core;
+namespace App;
 
 class Core {
 	function __construct() {

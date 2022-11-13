@@ -3,8 +3,8 @@
 require __DIR__.'/../../config/bootstrap.php';
 
 
-use Root\Roboziel\Core;
-
+echo '<pre>';
+use App\Core;
 
 $oHttp = new Core();
 #$oHttp->run();
