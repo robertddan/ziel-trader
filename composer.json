@@ -1,0 +1,17 @@
+{
+    "name": "root/roboziel",
+    "description": "Robo-Advisor",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "core/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Robert-Dan",
+            "email": "danrobert445@gmail.com"
+        }
+    ],
+    "require": {}
+}
