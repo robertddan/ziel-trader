@@ -5,6 +5,8 @@
     "autoload": {
         "psr-4": {
             "App\\": "core/",
+            "App\\Bin\\": "core/bin/",
+            "App\\Framework\\": "core/framework/",
             "App\\Core\\": "core/http/"
         }
     },

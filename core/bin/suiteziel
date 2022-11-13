@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+
+
+require __DIR__.'/../../config/bootstrap.php';
+use App\Framework\Console;
+
+function event_dispatch(){
+	#console
+	$console = new Console();
+	$console->call();
+	return true;
+}
+
+if (!event_dispatch()) die('event_dispatch'); 
+?>
