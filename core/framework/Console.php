@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Core\Framework;
 
+namespace App\Core\Framework;
 
 class Console
 {
