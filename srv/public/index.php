@@ -1,12 +1,17 @@
 <?php
 
 require __DIR__.'/../../config/bootstrap.php';
-print '<pre>';
 
 use App\Core\Http\Router;
-$oHttp = new Router();
 
-var_dump($oHttp->invoking_callouts());
+function event_dispatch(){
+	#router
+print '<pre>';
+	$oRouter = new Router();
+	$oRouter->invoking_callouts();
 print '</pre>';
+	return true;
+}
 
+if (!event_dispatch()) die('event_dispatch'); 
 ?>
