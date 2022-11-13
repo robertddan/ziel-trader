@@ -22,7 +22,7 @@ ini_set('trader.real_precision', 8);
 #ini_set('xdebug.var_display_max_children', '256');
 #ini_set('xdebug.var_display_max_data', '1024');
 # bc math scale
-call_user_func('bcscale', 0);
+#call_user_func('bcscale', 0);
 # session
 #if (session_status() !== 2) session_start();
 #var_dump(session_save_path());
