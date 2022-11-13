@@ -8,7 +8,9 @@
             "App\\Core\\": "core/",
             "App\\Core\\Bin\\": "core/bin/",
             "App\\Core\\Framework\\": "core/framework/",
-            "App\\Core\\Http\\": "core/http/"
+            "App\\Core\\Http\\": "core/http/",
+            "App\\Draft\\Backend\\": "draft/backend/",
+            "App\\Draft\\Frontend\\": "draft/frontend/"
         }
     },
     "authors": [
