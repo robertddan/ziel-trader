@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\Core;
+namespace App\Core\Http;
 
-class Http {
+class Router {
 	function __construct() {
-		var_dump('Http');
+		var_dump('Router');
 	}
 	
 	function invoking_callouts() {

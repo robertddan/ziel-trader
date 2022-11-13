@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Framework;
+namespace App\Core\Framework;
 
 
 class Console extends Framework

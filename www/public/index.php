@@ -4,10 +4,10 @@ require __DIR__.'/../../config/bootstrap.php';
 print '<pre>';
 
 #use App\Core;
-use App\Core\Http;
+use App\Core\Http\Router;
 
 #$oCore = new Core();
-$oHttp = new Http();
+$oHttp = new Router();
 
 var_dump($oHttp->invoking_callouts());
 print '</pre>';
