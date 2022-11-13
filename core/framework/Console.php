@@ -3,7 +3,7 @@
 namespace App\Core\Framework;
 
 
-class Console extends Framework
+class Console
 {
   public function call () :int
   {
