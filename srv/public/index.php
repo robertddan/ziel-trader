@@ -2,17 +2,18 @@
 
 require __DIR__.'/../../config/bootstrap.php';
 
-use App\Core\Framework\Dispatcher;
 
-function event_dispatch() {
+use App\Core\Http\Router;
+
+function event_route() {
 	#router
 print '<pre>';
-	$oDispatcher = new Dispatcher();
+	$oDispatcher = new Router();
 	$oDispatcher->invoking_callouts();
 	$oDispatcher->forwards_response();
 print '</pre>';
 	return true;
 }
 
-if (!event_dispatch()) die('event_dispatch'); 
+if (!event_route()) die('event_route'); 
 ?>
