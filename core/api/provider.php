@@ -14,7 +14,6 @@ class Provider {
 	
 	function invoking_callouts() {
 		var_dump('--invoking_callouts');
-		var_dump($this->aQuery);
 		return true;
 	}
 }
