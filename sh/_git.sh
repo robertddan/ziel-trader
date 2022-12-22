@@ -14,5 +14,6 @@ git commit -m "${message:=default value}"
 git remote add github https://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@github.com/johnidevo/roboziel.git
 git remote add bucket https://robertddan:ATBBLeBCEAjMgjFkDehDxk2Bm8qe48C28E13@bitbucket.org/robo-workspace/roboziel-scrum.git
 
-git push origin master
+git push github master
+git push bucket master
 #git pull origin master
