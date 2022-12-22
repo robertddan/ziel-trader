@@ -21,5 +21,7 @@
             "email": "danrobert445@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "mongodb/mongodb": "^1.15"
+    }
 }
