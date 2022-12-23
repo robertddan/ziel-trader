@@ -3,7 +3,7 @@
 
 namespace App\Core\API;
 
-class Runtime {
+class Supply {
 	
 	private $aQuery;
 	
