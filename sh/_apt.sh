@@ -21,6 +21,11 @@
 
 #ps aux
 
-sudo systemctl status mongod
+#sudo systemctl status mongod
 
-mongos --configdb replsetname/localhost:27010 --port 27011
+#mongos --configdb replsetname/localhost:27010 --port 27011
+
+
+#sudo apt-get update
+#sudo apt-get install php-pear php7.3-dev 
+#sudo pecl install trader
