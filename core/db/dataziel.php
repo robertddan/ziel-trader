@@ -4,14 +4,16 @@
 
 */
 
-namespace App\Core\Command;
+namespace App\Core\db;
 
-class Process {
+class Dataziel {
 	
-	private $aQuery;
+	public $sPath;
+	public $sTable;
 	
-	function __construct() {
-		$this->aQuery = $_GET;
+	function __construct($sPath, $sTable) {
+		$this->sPath = $sPath;
+		$this->sTable = $sTable;
 		var_dump('-Sockets');
 	}
 	
