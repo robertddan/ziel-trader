@@ -1,9 +1,9 @@
 <?php
 
 
-namespace App\Core\Http;
+namespace App\Core\Framework;
 
-class Router {
+class Error {
 	
 	private $aQuery;
 	

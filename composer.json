@@ -12,7 +12,8 @@
             "App\\Core\\Http\\": "core/http/",
             "App\\Core\\Proposal\\": "core/Proposal/",
             "App\\Draft\\Backend\\": "draft/backend/",
-            "App\\Draft\\Frontend\\": "draft/frontend/"
+            "App\\Draft\\Frontend\\": "draft/frontend/",
+            "App\\Draft\\Fullstack\\": "draft/fullstack/"
         }
     },
     "authors": [

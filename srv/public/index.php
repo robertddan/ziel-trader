@@ -7,11 +7,11 @@ use App\Core\Http\Router;
 
 function event_route() {
 	#router
-print '<pre>';
-	$oDispatcher = new Router();
-	$oDispatcher->invoking_callouts();
-	$oDispatcher->forwards_response();
-print '</pre>';
+	print '<pre>';
+		$oDispatcher = new Router();
+		$oDispatcher->invoking_callouts();
+		$oDispatcher->forwards_response();
+	print '</pre>';
 	return true;
 }
 

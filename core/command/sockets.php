@@ -12,11 +12,18 @@ class Sockets {
 		var_dump('-Sockets');
 	}
 	
-	function invoking_callouts() {
+	function server() {
 		var_dump('--invoking_callouts');
 		var_dump($this->aQuery);
 		return true;
 	}
+	
+	function client() {
+		var_dump('--invoking_callouts');
+		var_dump($this->aQuery);
+		return true;
+	}
+	
 }
 
 ?>

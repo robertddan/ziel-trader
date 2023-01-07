@@ -20,6 +20,18 @@ class Process {
 		var_dump($this->aQuery);
 		return true;
 	}
+	
+	function child_race () {
+		var_dump('--invoking_callouts');
+		var_dump($this->aQuery);
+		return true;
+	}
+	
+	function process_main() {
+		var_dump('--invoking_callouts');
+		var_dump($this->aQuery);
+		return true;
+	}
 }
 
 ?>

@@ -23,8 +23,8 @@ class Dataziel {
 	}
 	
 	function invoking_callouts($sPrices) {
+		$aPrices = json_decode($sPrices);
 		
-		$aPrices = json_decode();
 		
 		# Path
 		if (is_null($this->sRows)) $this->sRows = date('His');
