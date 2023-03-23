@@ -6,10 +6,10 @@ namespace App\Core\Framework;
 class Console
 {
 	public $aArguments;
-	
+
   public function call() :bool
   {
-		print('_____________'. __NAMESPACE__. '__'. __FUNCTION__ .' _____________'. PHP_EOL);
+		print('_____________'. __NAMESPACE__. '__'. __FUNCTION__ .'_____________'. PHP_EOL);
 		$aArgv = $_SERVER['argv'];
 		if (empty($aArgv[1])) die('no argv given'. PHP_EOL);
 		$this->aArguments = explode(':', $aArgv[1]);
