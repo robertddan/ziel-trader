@@ -11,7 +11,7 @@ read -p "Enter your commit message: " message
 git commit -m "${message:=default value}"
 
 
-git remote add origin https://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@github.com/johnidevo/roboziel.git
+git remote add origin ...
 git push origin master
 
 #git pull origin master

@@ -10,7 +10,7 @@ var ziel = require('./ziel');
 
 /*
 let networks = 'ropsten';
-let address = '0xf3337E1F454b1DF8ABd68517Fd8C3B13E7aa0B90';
+let address = '';
 
 	var network = (networks == 'homestead'? '': '-'+ networks);
 	var host = 'https://api'+ network +'.etherscan.io';
@@ -27,7 +27,7 @@ async function get_abi(address, networks) {1
 	//return response.data.result
 }
 
-console.log(get_abi('0xf3337E1F454b1DF8ABd68517Fd8C3B13E7aa0B90', 'ropsten'));
+console.log(get_abi('', 'ropsten'));
 */
 
 
@@ -307,12 +307,3 @@ const balance = (await contract.balanceOf((await provider.getSigners())[0].addre
 https://ethereum.stackexchange.com/questions/101858/how-to-get-the-erc-20-token-balance-of-an-account-using-etherjs
 */
 
-
-/*
-Kovan:
-carpet steak fold actual copper circle legal human change trust syrup hunt
-ready fossil draft client anchor bar priority taxi height practice job erupt
-{"address":"0x34a9D3119FeDE4721D1aA45A7319A52E46Cb8FF0","mnemonic":"hunt round replace street dove smoke silly sing wear wait stomach slight","privateKey":"0x0753656c07daa00f626395fc79c382868a419e721a0f6b65a955e831ec043051"}
-0xB404c51BBC10dcBE948077F18a4B8E553D160084, 0xf41304c0f7636e426765172e1a37b922f6899f8e0ef3a49683a4a7a639acadd4, fat crouch friend degree that own pride mother bomb midnight sudden yellow
-0x68f47a82faf4FBCAF8e876E96e5C278b131F7592, 0x802dc060accff67505b291af4c415597283f2e0ff04b29945cdb72f2b2be245a, army illegal bless genuine long eagle gospel naive side elegant glide opinion
-*/

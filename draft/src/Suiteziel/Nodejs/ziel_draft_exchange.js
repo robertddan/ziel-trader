@@ -196,18 +196,3 @@ https://ethereum.stackexchange.com/questions/101858/how-to-get-the-erc-20-token-
 */
 
 
-/*
-Kovan:-
-carpet steak fold actual copper circle legal human change trust syrup hunt
-ready fossil draft client anchor bar priority taxi height practice job erupt
-{"address":"0x34a9D3119FeDE4721D1aA45A7319A52E46Cb8FF0","mnemonic":"hunt round replace street dove smoke silly sing wear wait stomach slight","privateKey":"0x0753656c07daa00f626395fc79c382868a419e721a0f6b65a955e831ec043051"}
-0xB404c51BBC10dcBE948077F18a4B8E553D160084, 0xf41304c0f7636e426765172e1a37b922f6899f8e0ef3a49683a4a7a639acadd4, fat crouch friend degree that own pride mother bomb midnight sudden yellow
-0xEB6f9cAC9cb7a183627A75Bcb2dEe91112D65730, 0x12ccd360761334e9a7c17747209a5c9e35dcc33cffc805af197001864eca00f3, depend nerve decorate offer analyst travel muscle endless wide frame shove physical 
-
-
-
-so consider an ICO scenario, we have 3 accounts - A (Benificiary), B (Crowdsale), C (User) If i wan to transfer token to account C (User), following will be the process C -> A = Send ethers B -> C = Receive tokens In this process, for sending tokens, if we use 1. transfer() -> gas price will be paid by B 2. approve() + transferFrom() -> here gas price will be paid by whom? – 
-Rishikesh Jadhav
-Apr 23, 2018 at 13:10
-
-*/
