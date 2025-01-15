@@ -21,8 +21,8 @@ class Controller_tasks extends Controller
   protected function api_keys()
   {
     return array(
-      'apiKey' => 'nng7oo0olz7GNECRr3YqPEcdZAWaMz5dmdVUjHRouTb21H3vFhoQBktHXMbGD1Fp',
-      'secret' => 'p9OiEf0AkVGBnFIe0CFxerwJ2T1pRCkp0wiG5jUUnfx9Ht3awDuLiO3YxpdJjfOp',
+      'apiKey' => '',
+      'secret' => '',
     );
   }
 
