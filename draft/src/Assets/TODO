@@ -1,0 +1,6 @@
+# in set_analysis_ema the array_map with iDivisor
+
+# get current opened situation and see if is a buy/sell, SAVE, get start price.
+
+16.05.2020
+ - After business plan, and after mysql. For view with setup class, split the database from market requests

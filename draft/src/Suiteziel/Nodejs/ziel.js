@@ -1,0 +1,11 @@
+module.exports={
+	//sZielEthScan: "WB8JVHRKJA13TX2B2MJ2PH8P4NMDIQMERE", // #1
+	sZielEthScan: "IDGI25V36UEG7JW915WKJ345FNS3J8JS6U", // #2
+	sZielInfura: "3ef5304950384394ab72e67635e8c7f8",
+	sZielPrivate1: "869980b908fda0ecef09a046c6148a773af8abd86271c46e4996587de1273e94", // #1
+	sZielPrivate2: "b5ade609743845495fbdb55c1aae446720cc83e285ef02c2f7ddf2013b67d6e8", // #2
+	sZielPrivate3: "6439995fc24de5914477ab796e6a3a0c97c8e041c8e9325c0e2f6651cfc0fdc2", // #3
+	sZielPrivate4: "a9cb3b74dc90c8622e5abc21c96520f6f8bf0a1da90bb97e1f3f392a095c186c", // #4
+	sZielPrivate5: "926cfc517a7c4886d5eb125d05afc17583183014b11816f96c5d64f68b273e5a", // #5
+	sZielPrivate6: "33ae9c6f8342a9516f0fdc5b34fb0bc7fb25108289eec38e08e902b8c388ed4e", // #6
+}

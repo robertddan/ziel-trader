@@ -1,0 +1,136 @@
+# System-wide .bashrc file for interactive bash(1) shells.
+if [ -z "$PS1" ]; then
+   return
+fi
+
+PS1='\h:\W \u\$ '
+# Make bash check its window size after a process completes
+shopt -s checkwinsize
+
+[ -r "/etc/bashrc_$TERM_PROGRAM" ] && . "/etc/bashrc_$TERM_PROGRAM"
+
+
+{"id":0,"closeoutAsk":"6.68519","closeoutBid":"6.68398","instrument":"USD_CNH","time":"2020-11-03T01:20:56.436640469Z","note":[],"open":0,"high":0,"low":0,"close":0,"mids":"6.68458","key":"1604366401918749491"}
+{"id":0,"closeoutAsk":"1.70863","closeoutBid":"1.70836","instrument":"GBP_CAD","time":"2020-11-03T01:20:56.415977709Z","note":[],"open":0,"high":0,"low":0,"close":0,"mids":"1.70849","key":"1604366400908701843"}
+{"id":3815,"closeoutAsk":"278.61","closeoutBid":"278.21","instrument":"SG30_SGD","time":"2020-11-03T01:29:04.799324333Z","note":[],"open":0,"high":0,"low":0,"close":0,"mids":"278.41","key":"1604366941918108492"}
+{"id":3816,"closeoutAsk":"15866.0","closeoutBid":"15836.3","instrument":"CN50_USD","time":"2020-11-03T01:29:04.800279334Z","note":[],"open":0,"high":0,"low":0,"close":0,"mids":"15851.1","key":"1604366944550038065"}
+
+{"id":0,"closeoutAsk":"21.37685","closeoutBid":"21.36918","instrument":"USD_MXN","time":"2020-11-03T01:29:04.840308931Z","note":[],"open":0,"high":0,"low":0,"close":0,"mids":"21.37301","key":"1604366944840308931"}
+{"id":0,"closeoutAsk":"18.89689","closeoutBid":"18.87354","instrument":"EUR_ZAR","time":"2020-11-03T01:29:05.297672189Z","note":[],"open":0,"high":0,"low":0,"close":0,"mids":"18.88521","key":"1604366944076826707"}
+                           
+{"id":2552,"closeoutAsk":"24804.8","closeoutBid":"24799.1","instrument":"HK33_HKD","time":"2020-11-03T01:41:40.780196838Z","note":[],"open":0,"high":0,"low":0,"close":0,"mids":"24801.9","key":"1604367662119004679"}
+{"id":2553,"closeoutAsk":"11735.4","closeoutBid":"11728.2","instrument":"IN50_USD","time":"2020-11-03T01:41:40.761812956Z","note":[],"open":0,"high":0,"low":0,"close":0,"mids":"11731.8","key":"1604367661654074471"}
+
+
+{"id":6975,"closeoutAsk":"1.75695","closeoutBid":"1.75668","instrument":"EUR_NZD","time":"2020-11-03T01:44:31.653365814Z","note":[],"open":0,"high":0,"low":0,"close":0,"mids":"1.75681","key":"1604367869248025855"}
+
+<<COMMENT
+
+#!/bin/bash
+
+for i in {1..2}
+do
+
+  if [ $(screen -ls | grep -o '[0-9]*\.sqlite' -c) -gt 1 ]; 
+  then
+    echo "killall sqlite -gt 1";
+    killall screen;
+  fi;
+
+  if [ $(screen -ls | grep -o '[0-9]*\.stream' -c) -gt 1 ]; 
+  then
+    echo "killall stream -gt 1";
+    killall screen;
+  fi;
+
+  screen -wipe;
+
+  if [ $(screen -ls | grep -o '[0-9]*\.sqlite' -c) -gt 0 ]; 
+  then
+    echo "Process sqlite running ..." $(date '+%d/%m/%Y %H:%M:%S');
+  else
+    echo "Restart sqlite process " $(date '+%d/%m/%Y %H:%M:%S');
+    screen -d -S sqlite -m /usr/local/Cellar/php/7.4.11/bin/php ~/Development/sticks/bin/console app:oanda:sqlite -L -Logfile ~/Development/sticks/bin/sqlite.log
+  fi;
+
+  if [ $(screen -ls | grep -o '[0-9]*\.stream' -c) -gt 0 ]; 
+  then
+    echo "Process stream running ..." $(date '+%d/%m/%Y %H:%M:%S');
+  else
+    echo "Restart stream process " $(date '+%d/%m/%Y %H:%M:%S');
+    screen -d -S stream -m /usr/local/Cellar/php/7.4.11/bin/php ~/Development/sticks/bin/console app:oanda:stream -L -Logfile ~/Development/sticks/bin/stream.log
+  fi;
+
+  sleep 9
+done
+
+
+  FILENAMEB=~/Development/sticks/bin/lxog.txt;
+  FILESIZEB=$(cat "$FILENAMEB");
+  #echo "Size of $FILENAME = $FILESIZE bytes.";
+
+  FILENAMEA=~/Development/sticks/src/Suiteziel/Providers/Oanda/store/data/stream.json;
+  FILESIZEA=$(stat -f %z "$FILENAMEA");
+  #echo "Size of $FILENAME = $FILESIZEA bytes.";
+  FILESIZEA=$(echo $FILESIZEA | tee ~/Development/sticks/bin/lxog.txt);
+  #echo "Size of tee $FILESIZEB - $FILESIZEA bytes."
+
+  if [ "$FILESIZEA" -eq "$FILESIZEB" ]; 
+  then
+    echo "Restart stream process by Filesize" $(date '+%d/%m/%Y %H:%M:%S');
+    screen -S stream -X quit;
+    screen -wipe;
+    screen -d -S stream -m /usr/local/Cellar/php/7.3.12/bin/php ~/Development/sticks/bin/console app:oanda:stream -L -Logfile ~/Development/sticks/bin/stream.log;
+  fi;
+
+
+func ()
+{
+global_var=137    #  Visible only within the function block
+                 #+ before the function has been called. 
+}  
+
+
+FILENAME=~/Development/sticks/src/Suiteziel/Providers/Oanda/store/data/stream.json
+FILESIZE=$(stat -f %z "$FILENAME")
+echo "Size of $FILENAME = $FILESIZE bytes."
+
+var=256
+
+ps -u | grep $0
+{
+ps -u | grep $0
+{
+var="123"  
+export var
+echo "var is "$var
+
+ps -u | grep $0
+
+} | tee ~/Development/sticks/bin/lxog.txt
+echo "var is "$var
+}
+
+echo "var is "$var
+
+
+
+FILENAME=~/Development/sticks//src/Suiteziel/Providers/Oanda/store/data/stream.json
+FILESIZE=$(stat -c%s "$FILENAME")
+echo "Size of $FILENAME = $FILESIZE bytes."
+
+* * * * 1-5 /bin/bash ~/Development/sticks/bin/cron.sh >> ~/Development/sticks/bin/cron.log
+* * * * 1-5 /bin/bash ~/Development/sticks/bin/cron.sh > ~/Development/sticks/bin/cron.log
+
+-L -Logfile Log_file_name_of_your_choice command_to_be_executed
+
+if [ $(ps -efa | grep -v grep | grep 'bin/console app:oanda:stream' -c) -gt 0 ]; then
+  echo "Process running ..." $(date '+%d/%m/%Y %H:%M:%S');
+else
+  echo "Restart process 2" $(date '+%d/%m/%Y %H:%M:%S');
+  #screen -d -S stream -m php ~/Development/sticks/bin/console app:oanda:stream -L -Logfile ~/Development/sticks/bin/stream.log
+fi;
+
+COMMENT
+
+

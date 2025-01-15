@@ -1,0 +1,40 @@
+
+#var_dump(function_exists('trader_cdlupsidegap2crows'));
+
+#$user = posix_getpwnam('robert-dan');
+#var_dump($user);
+#posix_setuid($user['uid']);
+#posix_setgid($user['gid']);
+#pcntl_exec('/path/to/cmd');
+
+
+
+
+/*
+
+
+3whitesoldiers - gapsidesidewhite
+gravestonedoji - opposite dragonflydoji
+
+
+
+
+    #$this->iScale = null;
+    #$this->fRatio = null;
+    #$this->fMinPrice = null;
+
+  #Models
+  #public $oTwig;
+  #public $oSticks;
+  #mas
+  #public $oMas;
+  #trade
+  #public $oTrade;
+  #view
+  #public $aaView;
+  #public $sPair;
+  #public $iScale;
+  #public $fMinPrice;
+  #public $fRatio;
+  
+*/

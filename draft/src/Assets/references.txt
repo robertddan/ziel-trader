@@ -1,0 +1,61 @@
+References
+
+# fibonacci_time_zones
+https://school.stockcharts.com/doku.php?id=chart_analysis:fibonacci_time_zones
+
+Phpfastcache - A PHP cache library made for building reactive ...
+https://www.phpfastcache.com
+Phpfastcache is an abstract PHP cache library made for building reactive apps using various backend such as Redis, Couchdb, Couchbase, Cassandra, etc.
+
+Author: Lance Beggs - YourTradingCoach.com
+https://yourtradingcoach.com › author › ytcwpgo
+Trading Process and Strategy · Drive – Pause – Drive. ByLance Beggs September 3, 2021 September 3, 2021. Sometimes the simplest things are the best.
+
+OANDA: Online Forex Trading & Forex Broker
+https://www.oanda.com
+OANDA Rate ® data currency calculator. Touchstone foreign exchange rates compiled from leading market data contributors. Trusted and used by major corporations, ...
+
+MVC is a design pattern used to decouple user-interface (view), data (model), and application logic (controller). 
+https://dotnet.microsoft.com › apps › aspnet › mvc
+
+Visual Studio Code - Code Editing. Redefined
+https://code.visualstudio.com
+Visual Studio Code is a code editor redefined and optimized for building and debugging modern web and cloud applications. Visual Studio Code is free and ...
+
+Composer
+https://getcomposer.org
+A Dependency Manager for PHP ... Composer and all content on this site are released under the MIT license.
+
+Symfony, High Performance PHP Framework for Web ...
+https://symfony.com
+Symfony is a set of reusable PHP components and a PHP framework to build web applications, APIs, microservices and web services.
+
+Bootstrap · The most popular HTML, CSS, and JS library in the ...
+https://getbootstrap.com
+Quickly design and customize responsive mobile-first sites with Bootstrap, the world's most popular front-end open source toolkit, featuring Sass variables 
+
+Home - Twig - The flexible, fast, and secure PHP template ...
+https://twig.symfony.com
+Twig is a modern template engine for PHP · Fast: Twig compiles templates down to plain optimized PHP code. The overhead compared to regular PHP code was reduced ...
+
+PHP: Hypertext Preprocessor
+https://www.php.net
+PHP is a popular general-purpose scripting language that is especially suited to web development. Fast, flexible and pragmatic, PHP powers everything from ...
+
+(n.d.). Stack Overflow. https://stackoverflow.com/
+Joeldg/bowhead. (n.d.). GitHub. https://github.com/joeldg/bowhead/blob/master/app/Util/Indicators.php
+#docstore.mik.ua/orelly/webprog/pcook/ch11_02.htm
+https://chrome.google.com/webstore/detail/save-svg-as-png/dihlbjcdgfoehmhbklciidmolbmabkki?hl=en
+https://developer.mozilla.org/en-US/docs/Web/SVG/Element/a
+https://inkscape.org/forums/questions/how-to-draw-a-line-perpendicular-to-another-of-any-direction/
+https://stackoverflow.com/questions/15881718/perpendicular-distance-from-a-point-to-a-line-represented-by-two-points
+
+# fibonacci
+https://fibonacci.com/fibonacci-fans-and-arcs/
+https://www.intmath.com/plane-analytic-geometry/perpendicular-distance-point-line.php
+https://www.codeproject.com/Questions/738309/How-to-draw-a-line-when-starting-point-angle-lengt
+
+# fans
+https://www.tradeciety.com/fibonacci-trading-circle-fan-time-zone/
+https://talkmarkets.com/content/us-markets/spx-fibonacci-fan-resistance-levelstargets?post=185596
+https://br.tradingview.com/chart/BTCUSD/cpb5JE22-BTC-Fib-Speed-Resistance-Fan-2-Trend-Based-Extension-3-TZ/

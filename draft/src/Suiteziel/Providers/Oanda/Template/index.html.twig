@@ -1,0 +1,716 @@
+<!-- index.html.twig <meta http-equiv="refresh" content="1124"> -->
+<!-- 
+  <div id="wrap" style="margin: 360 px 0 px 0 px -500 px;">
+    <svg height="3951" width="4630" transform="rotate( 90 )">
+
+  <div id="wrap" style="margin: 0px 0px 0px 0px;">
+    <svg height="3951" width="4630" transform="rotate( 0 )">
+
+-->
+<html>
+<head>
+  <style>
+    body  { font-size: 28px }
+    text  { font: 12px }
+    tspan { font: 12px fill: red; }
+    .bulls {
+      background-color: coral;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div id="wrap" style="margin: 0px 0px 0px 0px;">
+    <svg height="2600" width="4630" transform="rotate( 0 )">
+
+{########################################################################################################################}
+
+      {% if playground %}
+        <!-- chart margin -->
+        <line x1="0" y1="0" x2="0" y2="2600" style="stroke:Red;stroke-width:2.75" /> <!-- vertical -->
+        <line x1="0" y1="2600" x2="2600" y2="2600" style="stroke:Red;stroke-width:2.75"/> <!-- orizontal -->
+
+        <!-- chart boundaries -->
+        {% for i in range(0, 26) %} # orizontal
+          <line x1="{{ 150 * i + 0 }}" y1="{{ 0 }}" x2="{{ 150 * i + 0 }}" y2="{{ 2200 }}" style="stroke:LightGray;stroke-width:1.75" /> <!-- vertical -->
+          {% if i <= 14 %} # vertical
+            <line x1="{{ 0 }}" y1="{{ 150 * i }}" x2="{{ 3900 }}" y2="{{ 150 * i }}" style="stroke:LightGray;stroke-width:1.75" /> <!-- orizontal -->
+          {% endif %}
+        {% endfor %}
+        <!-- chart boundaries -->
+
+        <!-- chart stock name -->
+        <text x="-1000" y="100" fill="blue" transform="rotate(-90)">{{ name }}</text>
+        <!-- chart stock name -->
+      {% endif %}
+
+{########################################################################################################################}
+
+      <!-- pairs menu -->
+      {% if pairs %}
+        {# tspan, font-family (2020, by MDN contributors) #}
+        <text x="0" y="0" font-size="25" font-family="courier new" dy="0">
+
+          {% for key, pair in pairs %}
+            <tspan x="0" dy="25">
+              <a href="http://localhost:8080/oanda/index/{{ key }}">
+                {{ key }}
+              </a>
+            </tspan>
+          {% endfor %}
+        </text>
+      {% endif %}
+      <!-- end pairs menu -->
+
+{########################################################################################################################}
+
+      <!-- chart OHLC movements -->
+      {% if prices %}
+
+      {% set previews = [] %}
+{########################################################################################################################}
+
+        {% for price in prices %}
+          {% set xx1 = 150 + ((loop.index / 1) - 1) * (3700 / prices|length) %}
+          {% set xx2 = 150 + (loop.index / 1) * (3700 / prices|length) %}
+
+{########################################################################################################################}
+
+        <!-- chart_note -->
+        {% if chart_note %}
+            <text 
+              x="{{ xx1 + 30 }}" 
+              y="{{ 2555 - price.chart_high }}" 
+              fill="blue"
+              class="bulls"
+              font-size="24"
+              transform="rotate(-90, {{ xx1 + 6 }}, {{ 2555  - price.chart_high }})"
+            >
+              {{ price.note|join('--') }}
+            </text>  
+
+        {% endif %}
+        <!-- end chart_note -->
+
+{########################################################################################################################}
+
+          {% if chart_hh_ll %}
+            <circle 
+              cx="{{ xx1 }}" 
+              cy="{{ 2555 - price.swing_higher_high - 30 }}" 
+              r="6" 
+              fill="Violet" 
+            />
+      
+            <circle 
+              cx="{{ xx1 }}" 
+              cy="{{ 2555 - price.swing_lower_low + 34 }}" 
+              r="6" 
+              fill="ForestGreen" 
+            />
+          {% endif %}
+
+{########################################################################################################################}
+
+          {% if chart_trends %}
+            {% if price.trends.uptrend == 1 %}
+              <circle 
+                cx="{{ xx1 }}" 
+                cy="{{ 2555 - price.swing_higher_high + 40 }}" 
+                r="6" 
+                fill="blue" 
+              />
+            {% elseif price.trends.downtrend == 1 %}
+              <circle 
+                cx="{{ xx1 }}" 
+                cy="{{ 2555 - price.swing_lower_low + 44 }}" 
+                r="6" 
+                fill="red" 
+              />        
+            {% elseif price.trends.sidewaystrend == 1 %}
+              <circle 
+                cx="{{ xx1 }}" 
+                cy="{{ 2555 - price.swing_lower_low + 0 }}" 
+                r="6" 
+                fill="orange" 
+              />
+            {% endif %}
+          {% endif %}
+
+{########################################################################################################################}
+
+          {% if chart_swings %}
+            {% if price.swing_low['x'] == 0 %}
+              <line 
+                x1="{{ xx1 - 1 - (3700 / prices|length) * (price.swing_low['x'] ) }}"
+                y1="{{ 2555 - price.swing_low['y']['low'] }}" 
+                x2="{{ xx1 - 1 - (3700 / prices|length) * (price.swing_high['x'] ) }}" 
+                y2="{{ 2555 - price.swing_high['y']['high'] }}" 
+                style="stroke:Orange;stroke-width:2"
+              />
+            {% endif %}
+
+            {% if price.swing_high['x'] == 0 %}
+              <line 
+                x1="{{ xx1 - 1 - (3700 / prices|length) * (price.swing_high['x'] ) }}"
+                y1="{{ 2555 - price.swing_high['y']['high'] }}" 
+                x2="{{ xx1 - 1 - (3700 / prices|length) * (price.swing_low['x'] ) }}" 
+                y2="{{ 2555 - price.swing_low['y']['low'] }}" 
+                style="stroke:LimeGreen;stroke-width:2"
+              />
+            {% endif %}
+          {% endif %}
+
+      
+{########################################################################################################################}
+
+          {% if chart_pivots_standard %}
+            {% for standard in price.pivots %}
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - standard.standard_pivot_r1|default(0) }}"
+                y2="{{ 2555 - standard.standard_pivot_r1|default(0) }}" 
+                style="stroke:Crimson;stroke-width:2" 
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - standard.standard_pivot_r2|default(0) }}"
+                y2="{{ 2555 - standard.standard_pivot_r2|default(0) }}" 
+                style="stroke:Crimson;stroke-width:2" 
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - standard.standard_pivot_p|default(0) }}"
+                y2="{{ 2555 - standard.standard_pivot_p|default(0) }}"
+                style="stroke:DarkBlue;stroke-width:2" 
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - standard.standard_pivot_s1|default(0) }}"
+                y2="{{ 2555 - standard.standard_pivot_s1|default(0) }}"
+                style="stroke:DarkGreen;stroke-width:2" 
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - standard.standard_pivot_s2|default(0) }}"
+                y2="{{ 2555 - standard.standard_pivot_s2|default(0) }}"
+                style="stroke:DarkGreen;stroke-width:2" 
+                />
+            {% endfor %}
+          {% endif %}
+
+{########################################################################################################################}
+          {% if chart_pivots_fibonacci %}
+    {#
+          '__p' => $fPivotPointP,
+          '__s0' => $fSupport0S0,
+          '__s1' => $fSupport1S1,
+          '__s2' => $fSupport2S2,
+          '__s3' => $fSupport3S3,
+          '__s4' => $fSupport4S4,
+          '__s5' => $fSupport5S5,
+          '__s6' => $fSupport6S6,
+          '__s7' => $fSupport7S7,
+          '__r0' => $fResistance0R0,
+          '__r1' => $fResistance1R1,
+          '__r2' => $fResistance2R2,
+          '__r3' => $fResistance3R3,
+          '__r4' => $fResistance4R4,
+          '__r5' => $fResistance5R5,
+          '__r6' => $fResistance6R6,
+          '__r7' => $fResistance7R7,
+    #}
+            {% for retracement in price.pivots %}
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__p|default(0) }}"
+                y2="{{ 2555 - retracement.__p|default(0) }}"
+                style="stroke:DarkBlue;stroke-width:3"
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__r0|default(0) }}"
+                y2="{{ 2555 - retracement.__r0|default(0) }}" 
+                style="stroke:Crimson;stroke-width:3"
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__r1|default(0) }}"
+                y2="{{ 2555 - retracement.__r1|default(0) }}" 
+                style="stroke:Crimson;stroke-width:3"
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__r2|default(0) }}"
+                y2="{{ 2555 - retracement.__r2|default(0) }}" 
+                style="stroke:Crimson;stroke-width:3"
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__r3|default(0) }}"
+                y2="{{ 2555 - retracement.__r3|default(0) }}" 
+                style="stroke:Crimson;stroke-width:3"
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__r4|default(0) }}"
+                y2="{{ 2555 - retracement.__r4|default(0) }}" 
+                style="stroke:Crimson;stroke-width:2" 
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__r5|default(0) }}"
+                y2="{{ 2555 - retracement.__r5|default(0) }}" 
+                style="stroke:Crimson;stroke-width:2" 
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__r6|default(0) }}"
+                y2="{{ 2555 - retracement.__r6|default(0) }}" 
+                style="stroke:Crimson;stroke-width:2" 
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__r7|default(0) }}"
+                y2="{{ 2555 - retracement.__r7|default(0) }}" 
+                style="stroke:Crimson;stroke-width:2" 
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__r8|default(0) }}"
+                y2="{{ 2555 - retracement.__r8|default(0) }}" 
+                style="stroke:Crimson;stroke-width:2" 
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__r9|default(0) }}"
+                y2="{{ 2555 - retracement.__r9|default(0) }}" 
+                style="stroke:Crimson;stroke-width:2" 
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__s0|default(0) }}"
+                y2="{{ 2555 - retracement.__s0|default(0) }}"
+                style="stroke:DarkGreen;stroke-width:3"
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__s1|default(0) }}"
+                y2="{{ 2555 - retracement.__s1|default(0) }}"
+                style="stroke:DarkGreen;stroke-width:3"
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__s2|default(0) }}"
+                y2="{{ 2555 - retracement.__s2|default(0) }}"
+                style="stroke:DarkGreen;stroke-width:3"
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__s3|default(0) }}"
+                y2="{{ 2555 - retracement.__s3|default(0) }}"
+                style="stroke:DarkGreen;stroke-width:3"
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__s4|default(0) }}"
+                y2="{{ 2555 - retracement.__s4|default(0) }}"
+                style="stroke:DarkGreen;stroke-width:2" 
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__s5|default(0) }}"
+                y2="{{ 2555 - retracement.__s5|default(0) }}"
+                style="stroke:DarkGreen;stroke-width:2" 
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__s6|default(0) }}"
+                y2="{{ 2555 - retracement.__s6|default(0) }}"
+                style="stroke:DarkGreen;stroke-width:2" 
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__s7|default(0) }}"
+                y2="{{ 2555 - retracement.__s7|default(0) }}"
+                style="stroke:DarkGreen;stroke-width:2" 
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__s8|default(0) }}"
+                y2="{{ 2555 - retracement.__s8|default(0) }}"
+                style="stroke:DarkGreen;stroke-width:2" 
+                />          
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - retracement.__s9|default(0) }}"
+                y2="{{ 2555 - retracement.__s9|default(0) }}"
+                style="stroke:DarkGreen;stroke-width:2" 
+                />
+            {% endfor %}
+          {% endif %}
+{########################################################################################################################}
+          {% if chart_pivots_demark %}
+  {#
+        'demark_pivot_p' => $fPivotPointP,
+        'demark_pivot_s1' => $fSupport1S1,
+        'demark_pivot_r1' => $fResistance1R1
+  #}
+            {% for demark in price.pivots %}
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - demark.demark_pivot_p|default(0) }}"
+                y2="{{ 2555 - demark.demark_pivot_p|default(0) }}"
+                style="stroke:DarkBlue;stroke-width:2" 
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - demark.demark_pivot_s1|default(0) }}"
+                y2="{{ 2555 - demark.demark_pivot_s1|default(0) }}" 
+                style="stroke:DarkGreen;stroke-width:2" 
+                />
+              <line 
+                x1="{{ xx1 }}"
+                x2="{{ xx2 }}" 
+                y1="{{ 2555 - demark.demark_pivot_r1|default(0) }}"
+                y2="{{ 2555 - demark.demark_pivot_r1|default(0) }}" 
+                style="stroke:Crimson;stroke-width:2" 
+                />
+            {% endfor %}
+          {% endif %}
+
+{########################################################################################################################}
+# buy 
+          {% if chart_fans %}
+            <line 
+              x1="{{ xx1 - (3700 / prices|length) * (price.swing_low['x'] ) }}"
+              y1="{{ 2555 - price.swing_low['y']['low'] }}"
+              x2="{{ xx1 }}"
+              y2="{{ 2555 - price.chart_high }}"
+              style="stroke:Orange;stroke-width:0"
+            />
+
+
+            <circle 
+              cx="{{ xx1 - price['chart_draw_swing_buy']['x'] }}" 
+              cy="{{ 2555 - price['chart_draw_swing_buy']['y'] }}" 
+              r="10" 
+              fill="DodgerBlue" 
+            />
+
+
+            <line 
+              x1="{{ xx1 - (3700 / prices|length) * (price.swing_low['x']) }}"
+              y1="{{ 2555 - price.swing_low['y']['low'] }}"
+{##}
+              x2="{{ xx1 - price['chart_draw_swing_buy']['x'] }}"
+              y2="{{ 2555 - price['chart_draw_swing_buy']['y'] }}"
+              style="stroke:DodgerBlue;stroke-width:2"
+            />
+
+
+          {% endif %}
+# sell
+          {% if chart_fans %}
+            <line 
+              x1="{{ xx1 - (3700 / prices|length) * (price.swing_high['x'] ) }}"
+              y1="{{ 2555 - price.swing_high['y']['high'] }}"
+              x2="{{ xx1 }}"
+              y2="{{ 2555 - price.chart_low }}"
+              style="stroke:LimeGreen;stroke-width:0"
+            />
+
+            <circle 
+              cx="{{ xx1 - price['chart_draw_swing_sell']['x'] }}" 
+              cy="{{ 2555 - price['chart_draw_swing_sell']['y'] }}" 
+              r="10" 
+              fill="Crimson" 
+            />
+
+            <line 
+              x1="{{ xx1 - (3700 / prices|length) * (price.swing_high['x'] ) }}"
+              y1="{{ 2555 - price.swing_high['y']['high'] }}"
+{##}
+              x2="{{ xx1 - price['chart_draw_swing_sell']['x'] }}"
+              y2="{{ 2555 - price['chart_draw_swing_sell']['y'] }}"
+              style="stroke:Crimson;stroke-width:2"
+            />
+          {% endif %}
+{########################################################################################################################}
+
+          <!-- expo_lines -->
+          {% if expo_lines %}
+            <line 
+              x1="{{ xx1 }}"
+              x2="{{ xx2 }}" 
+              {#% if previews.expo_line_0[0] is not defined %}
+                y1="{{ 2555 - price.expo_line_0[0] }}" 
+              {% else %}
+                y1="{{ 2555 - previews.expo_line_0[0] }}" 
+              {% endif %#}
+              y1="{{ 2555 - price.expo_line_0[0] }}" 
+              y2="{{ 2555 - price.expo_line_0[0] }}" 
+              style="stroke:SaddleBrown;stroke-width:6;opacity:0;" 
+              />
+            <line 
+              x1="{{ xx1 }}"
+              x2="{{ xx2 }}" 
+              {#% if previews.expo_line_1[0] is not defined %}
+                y1="{{ 2555 - price.expo_line_1[0] }}" 
+              {% else %}
+                y1="{{ 2555 - previews.expo_line_1[0] }}" 
+              {% endif %#}
+              y1="{{ 2555 - price.expo_line_1[0] }}" 
+              y2="{{ 2555 - price.expo_line_1[0] }}" 
+              style="stroke:DodgerBlue;stroke-width:3" 
+              />
+            <line 
+              x1="{{ xx1 }}"
+              x2="{{ xx2 }}" 
+              y1="{{ 2555 - price.expo_line_2[0] }}" 
+              y2="{{ 2555 - price.expo_line_2[0] }}" 
+              style="stroke:DarkGreen;stroke-width:3" 
+              />
+            <line 
+              x1="{{ xx1 }}"
+              x2="{{ xx2 }}" 
+              {#% if previews.expo_line_3[0] is not defined %}
+                y1="{{ 2555 - price.expo_line_3[0] }}" 
+              {% else %}
+                y1="{{ 2555 - previews.expo_line_3[0] }}" 
+              {% endif %#}
+              y1="{{ 2555 - price.expo_line_3[0] }}" 
+              y2="{{ 2555 - price.expo_line_3[0] }}" 
+              style="stroke:Orange;stroke-width:3" 
+              />
+            <line 
+              x1="{{ xx1 }}"
+              x2="{{ xx2 }}" 
+              {% if previews.expo_line_4[0] is not defined %}
+                y1="{{ 2555 - price.expo_line_4[0] }}" 
+              {% else %}
+                y1="{{ 2555 - previews.expo_line_4[0] }}" 
+              {% endif %}
+              y2="{{ 2555 - price.expo_line_4[0] }}" 
+              style="stroke:Orange;stroke-width:3" 
+              />
+            <line 
+              x1="{{ xx1 }}"
+              x2="{{ xx2 }}" 
+              {% if previews.expo_line_5[0] is not defined %}
+                y1="{{ 2555 - price.expo_line_5[0] }}" 
+              {% else %}
+                y1="{{ 2555 - previews.expo_line_5[0] }}" 
+              {% endif %}
+              y2="{{ 2555 - price.expo_line_5[0] }}" 
+              style="stroke:DarkGreen;stroke-width:3" 
+              />
+            <line 
+              x1="{{ xx1 }}"
+              x2="{{ xx2 }}" 
+              {% if previews.expo_line_6[0] is not defined %}
+                y1="{{ 2555 - price.expo_line_6[0] }}" 
+              {% else %}
+                y1="{{ 2555 - previews.expo_line_6[0] }}" 
+              {% endif %}
+              y2="{{ 2555 - price.expo_line_6[0] }}" 
+              style="stroke:DodgerBlue;stroke-width:3" 
+              />
+            <line 
+              x1="{{ xx1 }}"
+              x2="{{ xx2 }}" 
+              {% if previews.expo_line_7[0] is not defined %}
+                y1="{{ 2555 - price.expo_line_7[0] }}" 
+              {% else %}
+                y1="{{ 2555 - previews.expo_line_7[0] }}" 
+              {% endif %}
+              y2="{{ 2555 - price.expo_line_7[0] }}" 
+              style="stroke:DarkGreen;stroke-width:3" 
+              />
+          {% endif %}
+          <!-- ens expo_lines -->
+
+{########################################################################################################################}
+
+          <!-- chart_line -->
+          {% if ask_price %}
+            <line 
+              x1="{{ xx1 }}"
+              x2="{{ xx2 }}" 
+              {% if previews.chart_closeoutAsk is not defined %}
+                y1="{{ 2555 - price.chart_closeoutAsk }}" 
+              {% else %}
+                y1="{{ 2555 - previews.chart_closeoutAsk }}" 
+              {% endif %}
+              {#{y1="{{ 2555 - previews.chart_closeoutAsk }}" }#}
+              y2="{{ 2555 - price.chart_closeoutAsk|default(0) }}" 
+              style="stroke:green;stroke-width:1"
+              {#style="stroke:papayawhip;stroke-width:1"#}
+              />
+          {% endif %}
+      
+          {% if bid_price %}
+            <line 
+              x1="{{ xx1 }}"
+              x2="{{ xx2 }}" 
+              {% if previews.chart_closeoutBid is not defined %}
+                y1="{{ 2555 - price.chart_closeoutBid }}" 
+              {% else %}
+                y1="{{ 2555 - previews.chart_closeoutBid }}" 
+              {% endif %}
+              {#{y1="{{ 2555 - previews.chart_closeoutBid }}" }#}
+              y2="{{ 2555 - price.chart_closeoutBid|default(0) }}" 
+              style="stroke:teal;stroke-width:1"
+              {#style="stroke:palegreen;stroke-width:1"#}
+              />
+          {% endif %}
+          <!-- chart_line -->
+
+{########################################################################################################################}
+
+          <!-- chart_sticks -->
+          {% if chart_sticks %}
+            {% if price.chart_open > price.chart_close %}
+              <!-- bearish -->
+              <line 
+                x1="{{ xx1 }}"
+                y1="{{ 2555 - price.chart_high }}" 
+                x2="{{ xx1 }}" 
+                y2="{{ 2555 - price.chart_open }}" 
+                style="stroke:DodgerBlue;stroke-width:1"
+              />
+              <!-- bearish -->
+            {% elseif price.chart_open < price.chart_close %}
+              <!-- bullish -->
+              <line 
+                x1="{{ xx1 }}"
+                y1="{{ 2555 - price.chart_high }}" 
+                x2="{{ xx1 }}" 
+                y2="{{ 2555 - price.chart_close }}" 
+                style="stroke:DodgerBlue;stroke-width:1"
+              />
+              <!-- bullish -->
+            {% elseif price.chart_open == price.chart_close %}
+              <!-- doji-->
+              <line 
+                x1="{{ xx1 }}"
+                y1="{{ 2555 - price.chart_high }}" 
+                x2="{{ xx1 }}" 
+                y2="{{ 2555 - price.chart_open }}" 
+                style="stroke:DodgerBlue;stroke-width:1"
+              />
+              <!-- doji-->
+            {% endif %}
+
+            {% if price.chart_open > price.chart_close %}
+              <!-- bullish -->
+              <rect 
+                x="{{ xx1 - 6}}"
+                y="{{ 2555 - price.chart_open }}" 
+                width="12" 
+                height="{{ price.chart_open - price.chart_close }}"
+                style="fill:none;stroke:DodgerBlue;stroke-width:1;" {# fill:DodgerBlue; - Red - DodgerBlue #}
+                opacity="1"
+              />
+              <!-- bullish -->
+            {% elseif price.chart_open < price.chart_close %}
+              <!-- bearish -->
+              <rect 
+                x="{{ xx1 - 6}}"
+                y="{{ 2555 - price.chart_close }}" 
+                width="12" 
+                height="{{ price.chart_close - price.chart_open }}"
+                style="fill:DodgerBlue;stroke:DodgerBlue;stroke-width:1;" {# LimeGreen - DodgerBlue #}
+                opacity="1"
+              />
+              <!-- bearish -->
+            {% elseif price.chart_open == price.chart_close %}
+            <!-- doji -->
+              <rect 
+                x="{{ xx1 - 6}}"
+                y="{{ 2555 - price.chart_open }}" 
+                width="12" 
+                height="1"
+                style="fill:DodgerBlue;stroke:DodgerBlue;stroke-width:0.5;" 
+              />
+              <!-- doji -->
+            {% endif %}
+
+            {% if price.chart_close > price.chart_open %}
+              <!-- bullish -->
+              <line 
+                x1="{{ xx1 }}"
+                y1="{{ 2555 - price.chart_open }}" 
+                x2="{{ xx1 }}" 
+                y2="{{ 2555 - price.chart_low }}" 
+                style="stroke:DodgerBlue;stroke-width:1"
+              />
+              <!-- bullish -->
+            {% elseif price.chart_close < price.chart_open %}
+              <!-- bearish -->
+              <line 
+                x1="{{ xx1 }}"
+                y1="{{ 2555 - price.chart_close }}" 
+                x2="{{ xx1 }}" 
+                y2="{{ 2555 - price.chart_low }}" 
+                style="stroke:DodgerBlue;stroke-width:1"
+              />
+              <!-- bearish -->
+            {% elseif price.chart_close == price.chart_open %}
+              <!-- doji -->
+              <line 
+                x1="{{ xx1 }}"
+                y1="{{ 2555 - price.chart_close }}" 
+                x2="{{ xx1 }}" 
+                y2="{{ 2555 - price.chart_low }}" 
+                style="stroke:DodgerBlue;stroke-width:1"
+              />
+              <!-- doji -->
+            {% endif %}
+      
+          {% endif %}
+          <!-- candle low -->
+
+{########################################################################################################################}
+{########################################################################################################################}
+          {% set previews = price %}
+        {% endfor %}
+{########################################################################################################################}
+
+      {% endif %}
+    </svg>
+
+  </div>
+<!-- <circle cx="{#{ 2 * (loop.index - 1) + 50 }#}" cy="{#{ previews.6 }#}" r="1" fill="red" />-->
+
+</body>
+</html>

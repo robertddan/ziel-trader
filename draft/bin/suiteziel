@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+use App\Suiteziel\Framework\Console;
+
+require dirname(__DIR__).'/config/bootstrap.php';
+
+
+
+#console
+$console = new Console();
+$console->call();
+
+
+

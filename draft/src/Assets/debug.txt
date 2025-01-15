@@ -1,0 +1,23 @@
+aiTimeSave[$sp__] = 0;
+abTimeSave[$sp__] = 0;
+
+
+which php
+php --ini
+
+/usr/local/lib/php.ini # alias
+/opt/local/etc/php73 # distro
+
+
+https://phoenixnap.com/kb/how-to-generate-ssh-key-centos-7
+http://www.steves-internet-guide.com/ssl-certificates-explained/
+
+
+
+Build process completed successfully
+Installing '/opt/local/include/php73/php/ext/swoole/php_swoole.h'
+Installing '/opt/local/include/php73/php/ext/swoole/config.h'
+Installing '/opt/local/lib/php73/extensions/no-debug-non-zts-20180731/swoole.so'
+install ok: channel://pecl.php.net/swoole-4.7.1
+configuration option "php_ini" is not set to php.ini location
+You should add "extension=swoole.so" to php.ini

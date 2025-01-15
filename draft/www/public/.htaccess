@@ -1,0 +1,22 @@
+# enable mod_rewrite
+RewriteEngine on
+
+# enable symbolic links
+Options +FollowSymLinks
+
+# protect all dot files
+<Files ~ "^.*\.">
+	Order allow,deny
+	Deny from all
+	Satisfy all
+</Files>
+
+# set the server administrator email
+SetEnv SERVER_ADMIN office@suiteziel.com
+
+# serve custom error pages
+ErrorDocument 400 /errors/400.html
+ErrorDocument 401 /errors/401.html
+ErrorDocument 403 /errors/403.html
+ErrorDocument 404 /errors/404.html
+ErrorDocument 500 /errors/500.html
