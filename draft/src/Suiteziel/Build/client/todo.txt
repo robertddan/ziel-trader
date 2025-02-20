@@ -1,2 +1,0 @@
-- for each pack must be a folder with template folder that contains Js and Css files for compile
-- 
