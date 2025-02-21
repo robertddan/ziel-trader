@@ -1,0 +1,152 @@
+<?php
+
+namespace Ziel\Providers\Oanda\Controller;
+
+
+use Ziel\Framework\Controller;
+
+class Controller_settings extends Controller
+{
+  # Class
+  public $aPairs;
+
+  public function __construct()
+  {
+    $this->set_pairs_settings();
+  }
+
+  public function set_pairs_settings()
+  {
+    $this->aPairs = array(
+      #'USD_ZAR' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'EUR_GBP' => array('ma_function' =>'trader_ma', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'USD_SEK' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      #'GBP_SGD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'GBP_HKD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'EUR_JPY' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'NZD_CAD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'NZD_CHF' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'NZD_HKD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      #'EUR_ZAR' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'EUR_PLN' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'USD_CNH' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'EUR_HUF' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      #'SGD_HKD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'AUD_NZD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'NZD_JPY' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'CAD_JPY' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 0.5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'GBP_CAD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'USD_SAR' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'CHF_HKD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'EUR_NZD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 7, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'USD_THB' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'GBP_CHF' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      #'TRY_JPY' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'USD_PLN' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'GBP_AUD' => array('ma_function' =>'trader_wma', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 5.20000000),
+      #'EUR_SGD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'CHF_JPY' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'USD_INR' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'EUR_SEK' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      #'USD_SGD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'USD_DKK' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      #'EUR_TRY' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'USD_JPY' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'GBP_PLN' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'USD_HKD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      #'NZD_SGD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      #'GBP_ZAR' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      #'ZAR_JPY' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'EUR_AUD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'HKD_JPY' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      #'CAD_SGD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'USD_NOK' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      #'USD_CZK' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'GBP_NZD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'EUR_DKK' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'AUD_JPY' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'USD_CAD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'USD_HUF' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      #'EUR_CZK' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'AUD_HKD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'CHF_ZAR' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'EUR_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      #'USD_TRY' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'GBP_JPY' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'EUR_CAD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'CAD_HKD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'USD_MXN' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'GBP_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      #'SGD_CHF' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'CAD_CHF' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'USD_CHF' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      #'AUD_SGD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'EUR_NOK' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'EUR_CHF' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'EUR_HKD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'NZD_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 15.90000000),
+      'AUD_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      #'SGD_JPY' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'AUD_CAD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+      'AUD_CHF' => array('ma_function' =>'trader_linearreg_angle', 'units' => 5000, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.20000000),
+
+      'XAU_HKD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.00000000),
+      'XAU_AUD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.00000000),
+      'XAU_JPY' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.00000000),
+      'XAU_CHF' => array('ma_function' =>'trader_linearreg', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.319000000),
+      'XAU_EUR' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.00000000),
+      'XAU_CAD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.00000000),
+      'XAU_GBP' => array('ma_function' =>'trader_linearreg', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.410000000),
+      'XAU_NZD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.00000000),
+      #'XAU_XAG' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 3.00000000),
+      'XAU_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.00000000),
+      'XAU_SGD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.00000000),
+      'XAG_AUD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 100, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'XAG_HKD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 100, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'XAG_EUR' => array('ma_function' =>'trader_linearreg_angle', 'units' => 100, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'XAG_CHF' => array('ma_function' =>'trader_linearreg_angle', 'units' => 100, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'XAG_GBP' => array('ma_function' =>'trader_linearreg_angle', 'units' => 100, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'XAG_JPY' => array('ma_function' =>'trader_linearreg_angle', 'units' => 100, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'XAG_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 100, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'XAG_NZD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 100, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'XAG_SGD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 100, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'XAG_CAD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 100, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'XPD_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'XPT_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'XCU_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'TWIX_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+
+      'AU200_AUD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'CN50_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'DE10YB_EUR' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'DE30_EUR' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'EU50_EUR' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'FR40_EUR' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'HK33_HKD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'IN50_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'JP225_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'NAS100_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'NL25_EUR' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'SG30_SGD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'SPX500_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'UK100_GBP' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'US2000_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000), # [risefall3methods open/bear - bull/close homingpigeon 1,1,3,2.2]
+      'US30_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'UK10YB_GBP' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+
+      'BCO_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'NATGAS_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'CORN_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 100, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'WHEAT_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 100, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'USB05Y_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'USB10Y_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'USB02Y_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 100, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'USB30Y_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'WTICO_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 1, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 2.20000000),
+      'SOYBN_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 10, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+      'SUGAR_USD' => array('ma_function' =>'trader_linearreg_angle', 'units' => 100, 'iTimeChart' => 5, 'iTimeframes' => 30, 'aBbyPip' => [0.49, 4.9, 49], 'fRatio' => 0.90000000),
+    );
+  }
+
+
+}

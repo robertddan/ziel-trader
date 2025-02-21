@@ -1,15 +1,35 @@
 #!/usr/bin/env php
 <?php
 
-use App\Suiteziel\Framework\Console;
+define('DS', DIRECTORY_SEPARATOR);
+chdir(__DIR__ . DS . '..' . DS);
+define('ROOT', getcwd() . DS);
+define('CONFIG', ROOT . 'config' . DS);
+define('VENDOR', ROOT . 'vendor' . DS);
 
-require dirname(__DIR__).'/config/bootstrap.php';
+require(CONFIG . DS . 'bootstrap.php');
 
-
-
+use Ziel\Framework\Console;
 #console
 $console = new Console();
 $console->call();
+
+
+/*
+use Ziel\System\Console;
+
+#console//pipe
+#switch off not from -- command /from backend
+
+$console = new Console();
+$console->call();
+
+$console = new Pipe();
+$console->call(new Console()); //
+$console->task(new DNS/Server()); //exception throw in console as view
+$console->task(new HTTP/Server()); //exception throw in console as view
+*/
+
 
 
 

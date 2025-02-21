@@ -1,0 +1,23 @@
+{
+    "name": "root/ziel-trader",
+    "description": "Suiteziel Algorithmic Trading - 100% Automatic",
+    "type": "project",
+    "autoload": {
+        "psr-4": { 
+            "Ziel\\": ["draft"]
+        }
+    },
+    "authors": [
+        {
+            "name": "Robert-Dan Dumitrascu",
+            "email": "robertddanedu@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        
+    },
+    "license": [
+        "AGPL-3.0-only"
+    ]
+}

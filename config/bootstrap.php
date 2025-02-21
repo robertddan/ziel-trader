@@ -1,9 +1,19 @@
 <?php
 
-$loader = require __DIR__ .'/../vendor/autoload.php';
+function exception_handler (Throwable $exception) {
+    print PHP_EOL. $exception->getMessage() .PHP_EOL.
+    'On file: '.$exception->getFile() .PHP_EOL.
+    'On line: '. $exception->getLine() .PHP_EOL.
+    $exception->getTraceAsString() .PHP_EOL;
+}
 
-#var_dump($loader->addPsr4('App\\Suiteziel\\BitMart\\', __DIR__ .'/../vendor/bitmart-php-sdk-api/src/BitMart/')); # .'/../vendor/bitmart-php-sdk-api/src/BitMart'));
+function throw_exception ($sException) {
+    throw new Exception($sException);
+}
 
-define('VAR_DIR', __DIR__ .'/../../var/');
+set_exception_handler('exception_handler');
 
-var_dump(file_exists(VAR_DIR));
+require(VENDOR . DS . "autoload.php");
+
+#$loader = require __DIR__ .'/../vendor/autoload.php';
+#define('VAR_DIR', __DIR__ .'/../../var/');
