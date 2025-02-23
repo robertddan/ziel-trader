@@ -78,19 +78,14 @@ class View_oanda extends View
   }
 
   public function index()
-	{
+  {
     $_start = microtime(true);
     $sp__ = $this->sPair;
     #$CachedString = $this->oCache->cm__->getItem($sp__);
     #var_dump($this->oCache->cm__->deleteItem($sp__));
-
     if (!$this->setup_view()) exit('setup_view');
-
-
     echo '<pre>';
-
-#exit();
-
+    #exit();
     $i = 0;
     foreach($this->aaView as $k__ => &$aPrice) 
     {
@@ -101,10 +96,8 @@ class View_oanda extends View
       #if (!$this->oPivots->pivots_view_client($aPrice, $this->aView, false)) exit('pivots_view_client');
       #maa      
       #if (!$this->oExpo->expo_view_client($aPrice, $this->aView, false)) exit('expo_view_client');
-      
-#var_dump(array($k__, $aPrice));
-#if ($i > 60) break;
-
+      #var_dump(array($k__, $aPrice));
+      #if ($i > 60) break;
       # Beggs
       if (!$this->set_chart_prices($aPrice, $this->aView)) exit('set_chart_prices');
       $i++;
@@ -115,7 +108,6 @@ class View_oanda extends View
 2020-11-24T22:01:37.085177038Z
 2020-11-24T22:07:00.005980767Z
 2020-11-24T22:11:18.485660266Z
-
 */
 
 echo '</pre>';
@@ -155,7 +147,6 @@ echo '</pre>';
       'chart_note' => 1,
       #trends,
       'chart_trends' => 0,
-      
       // #trader
       // 'chart_trader' => 1,
       // #note,
@@ -163,16 +154,16 @@ echo '</pre>';
     ));
 
   }
-
-	public function prior_stickske()
-	{
+  
+  public function prior_stickske()
+  {
     if (!$this->oPriors->prior_sticks_client($this->aaView, $this->aView)) exit('prior_sticks_client');
     $this->aaView = $this->oPriors->aaView;
     return true;
   }
-
-	private function setup_view()
-	{
+  
+  private function setup_view()
+  {
     $sp__ = $this->sPair;
     $this->aaView = $this->oPrices->aPrices[$sp__]; # $this->get_prices(true)[$this->sPair];
     if (empty($this->aaView)) exit('get_prices');
@@ -205,8 +196,6 @@ echo '</pre>';
       $aPrices['chart_low'] = $this->set_ratio($aPrices['low']);
       $aPrices['chart_close'] = $this->set_ratio($aPrices['close']);  
     }
-
-
 
     # trends
     // if (isset($aPrices['trends']))
@@ -266,7 +255,6 @@ echo '</pre>';
 #exit();
     }
 
-
     # swing_high/swing_low
     if (!empty($aPrices['swingl_prew']['y']))
     {
@@ -286,7 +274,6 @@ echo '</pre>';
     {
       $aPrices['swings_low'] = $this->set_ratio($aPrices['swings_low']);
     }
-    
     
     # swing_higher_high/swing_lower_low
     if (!empty($aPrices['swing_higher_high']))

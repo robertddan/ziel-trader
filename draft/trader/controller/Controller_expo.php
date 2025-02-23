@@ -254,7 +254,6 @@ class Controller_expo extends Controller
 
     }
 
-
     return true;
 
   }
@@ -291,8 +290,6 @@ class Controller_expo extends Controller
     return true;
   }
 
-
-
   protected function set_class_variables(&$aPrices)
   {
     $sp__ = $this->sPair;
@@ -316,10 +313,6 @@ class Controller_expo extends Controller
 
     return true;
   }
-
-
-
-
 
   public function __destruct()
   {

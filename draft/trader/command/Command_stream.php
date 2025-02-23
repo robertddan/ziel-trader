@@ -26,13 +26,8 @@ Esc to exit
 - screen to Detach:
 CTRL + a + d;
 
-
-
-
-
 /opt/local/lib/php73/extensions/no-debug-non-zts-20180731/
 /usr/local/Cellar/php/7.4.11/pecl/20190902/
-
 
 1:36
 2:41
@@ -41,22 +36,17 @@ CTRL + a + d;
 
 */
 
-
-
-
 /*
 Todo:
   # files handler 
   # market handler 
   # stream handler 
   # error handler 
-
   - If units not in order, check out and close submit.
   - sessings.json
   - file handler
   - last 80 candlesticks for resume
   - setup.json similar to 00002 rename
-
 */
 
 class Command_stream extends Command
@@ -140,16 +130,14 @@ class Command_stream extends Command
 /** Configure */
   protected function stream_server($bCloseTrades = false, $bServer = true, $bResumeSession = false)
   {
-
     var_dump('start_stream_server');
-
     var_dump([
 			get_class(),
 			$bServer,
       'iElementsNo' => $this->oSticks->iElementsNo,
       #'iTimeChart' => $this->oSticks->iTimeChart
     ]);
-/*
+    /*
     if ($bCloseTrades)
     {
       var_dump('close_all_trades');
@@ -160,16 +148,15 @@ class Command_stream extends Command
     {
       var_dump('resume_all_trades');
       if (!$this->oApi->resume_all_trades()) var_dump('Error - resume_all_trades');
-
       var_dump('file_session_resume'); # session.json fill
       $this->file_session_resume();
       print_r(PHP_EOL. json_encode(['count_session', count($_SESSION)]) .PHP_EOL);
     }
-*/
+    */
     if ($bServer)
     {
       #if (!$this->oApi->stream()) {sleep(2); $this->configure(false, true);}
-			$sJson = null;
+      $sJson = null;
       if (!$this->oApi->stream(array(get_class(), 'stream_client'))) {sleep(2); $this->configure(false, true);}
       //if (!$this->oApi->stream($sJson)) {sleep(2); $this->configure(false, true);}
     }
@@ -180,20 +167,15 @@ class Command_stream extends Command
     return false;
   }
 
-
 /*
 To do, Sofort.: 
   - ExpoMA liness starting Thursday - on Friday.
   - On weekends, the stream loop stops and opens late on Sundays.
 */
-#,.,.,
-
 
   public function stream_client($sJson = '')
   {
-
     print_r(':');
-
     try {
       #print_r(','); #reading
       $aaRowForFile = array();
@@ -214,14 +196,15 @@ To do, Sofort.:
       });
 			
       if (empty($aaPrices)) print_r('_');
-/*
 
+/*
 return print_r ($aaPrices). PHP_EOL;
 var_dump(array(
 	'$aaPrices',
 	$aaPrices
 ));
 */
+
       foreach ($aaPrices as $aPrice)
       {
         $sp__ = $this->sPair = $aPrice['instrument'];        
@@ -491,10 +474,10 @@ string(19) "file_session_resume"
     {
       if (!isset($aMarket['market_orders']['aPrice'])) continue;
       if (!isset($aSession[$sInstruments]['market_orders']['aPrice'])) continue;
-
+      
       # write array with prices for trader instead of the close price
       $aMarket['market_orders']['aPrice'] = $aSession[$sInstruments]['market_orders']['aPrice'];
-
+      
 /*
       if ($aMarket['market_orders']['fulfilled'] == 0)
       {
