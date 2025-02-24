@@ -156,7 +156,6 @@ $callback = function ($ch, $sJson) {
     $sUrl =  "$this->sUrl/accounts/$this->sAcc/$sEndpoint";
     $sUrl = sprintf("%s?%s", $sUrl, http_build_query($sParameters));
     $sUrl = rtrim($sUrl, '?');
-
         
     $aDefaults = array(
       CURLOPT_RETURNTRANSFER => true,
